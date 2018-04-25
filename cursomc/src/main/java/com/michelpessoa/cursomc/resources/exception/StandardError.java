@@ -3,7 +3,7 @@ package com.michelpessoa.cursomc.resources.exception;
 import java.io.Serializable;
 import java.util.Date;
 
-public class StandardErro implements Serializable{
+public class StandardError implements Serializable{
 	
 	private static final long serialVersionUID = -2547749884040212968L;
 	
@@ -11,7 +11,7 @@ public class StandardErro implements Serializable{
 	private String msg;
 	private Date timeStamp;
 	
-	public StandardErro(Integer status, String msg, Date timeStamp) {
+	public StandardError(Integer status, String msg, Date timeStamp) {
 		super();
 		this.status = status;
 		this.msg = msg;
