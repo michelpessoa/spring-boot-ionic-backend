@@ -22,7 +22,7 @@ import com.michelpessoa.cursomc.domain.Produto;
 import com.michelpessoa.cursomc.domain.enums.EstadoPagamento;
 import com.michelpessoa.cursomc.domain.enums.TipoCliente;
 import com.michelpessoa.cursomc.repositories.CategoriaRepository;
-import com.michelpessoa.cursomc.repositories.CidadeRespository;
+import com.michelpessoa.cursomc.repositories.CidadeRepository;
 import com.michelpessoa.cursomc.repositories.ClienteRepository;
 import com.michelpessoa.cursomc.repositories.EnderecoRepository;
 import com.michelpessoa.cursomc.repositories.EstadoRepository;
@@ -41,7 +41,7 @@ public class CursomcApplication implements CommandLineRunner{
 	@Autowired
 	private EstadoRepository estadoRepository;
 	@Autowired
-	private CidadeRespository cidadeRepository;
+	private CidadeRepository cidadeRepository;
 	@Autowired
 	private ClienteRepository clienteRepository;
 	@Autowired
