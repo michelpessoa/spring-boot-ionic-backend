@@ -19,6 +19,7 @@ import com.michelpessoa.cursomc.domain.Endereco;
 import com.michelpessoa.cursomc.domain.enums.TipoCliente;
 import com.michelpessoa.cursomc.repositories.CidadeRepository;
 import com.michelpessoa.cursomc.repositories.ClienteRepository;
+import com.michelpessoa.cursomc.repositories.EnderecoRepository;
 import com.michelpessoa.cursomc.services.exceptions.DataIntegrityException;
 import com.michelpessoa.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -27,6 +28,12 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository repo;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 		
 	public Cliente find(Integer id) {
 		Optional<Cliente> obj = repo.findById(id);
@@ -38,10 +45,10 @@ public class ClienteService {
 	public Cliente insert(Cliente obj) {
 		obj.setId(null);
 		obj = repo.save(obj);
-		//enderecoRepository.saveAll(obj.getEnderecos());
+		enderecoRepository.saveAll(obj.getEnderecos());
 		return obj;
 	}
-	
+	 
 
 	public Cliente update(Cliente obj) {
 		Cliente newObj = find(obj.getId());
