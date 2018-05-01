@@ -11,17 +11,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.michelpessoa.cursomc.domain.enums.Perfil;
 
 public class UserSS implements UserDetails {
-
-	private static final long serialVersionUID = 3419806309135434855L;
-
+	
+	private static final long serialVersionUID = -7782384961669007723L;
+	
 	private Integer id;
 	private String email;
 	private String senha;
-	Collection<? extends GrantedAuthority> authorities;
+	private Collection<? extends GrantedAuthority> authorities;
 	
 	public UserSS() {
 	}
-
+	
 	public UserSS(Integer id, String email, String senha, Set<Perfil> perfis) {
 		super();
 		this.id = id;
@@ -33,11 +33,10 @@ public class UserSS implements UserDetails {
 	public Integer getId() {
 		return id;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return authorities;
 	}
 
 	@Override
@@ -75,5 +74,8 @@ public class UserSS implements UserDetails {
 		// Alterar para conferência na conta do usuário, verificar se usário está ativo.
 		return true;
 	}
-
+	
+	public boolean hasRole(Perfil perfil) {
+		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
+	}
 }
